@@ -1,0 +1,17 @@
+$(document).ready(function(){
+  $('body').on('click', '.blog_delete', function(e) {
+    e.preventDefault;
+    id = $(this).attr('id')
+    $.ajax({
+      type: 'delete',
+      url: '/blogs/'+id,
+      success: function() {
+        window.location = '/';
+      },
+      error: function(){
+        alert('删除失败');
+        window.location = '/';
+      }
+    })
+  })
+})

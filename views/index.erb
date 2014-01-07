@@ -1,0 +1,14 @@
+<div>
+  <h1>你好！</h1>
+  <p><%= time%></p>
+  <table class="table">
+  	<% @blog.each do |blog|%>
+  	  <tr>
+  	  	<td><a href="<%="/blogs/#{blog.id}"%>"><%= blog.title%></a></td>
+  	  	<td><%= blog.content%></td>
+        <td><a href="javascript:void(0);" class="blog_delete" id="<%= blog.id%>">删除</a></td>
+  	  </tr>
+  	<% end %>
+  </table>
+  <a class="btn btn-primary" href="/blogs/new">新建</a>
+</div>

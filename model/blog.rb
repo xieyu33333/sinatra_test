@@ -1,0 +1,3 @@
+class Blog < ActiveRecord::Base
+  #self.table_name = "articles"
+end

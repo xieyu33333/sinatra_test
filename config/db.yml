@@ -1,0 +1,37 @@
+# Sequel Database Configuration
+
+# development: "mysql2://xieyu@localhost/sinatra_mysql_development"
+# test: "mysql2://xieyu@localhost/sinatra_mysql_test"
+# production: "mysql2://xieyu@localhost/sinatra_mysql_production"
+
+development: &development
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: opencourse_development
+  pool: 5
+  host: 127.0.0.1
+  username: root
+  password: root
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *development
+  database: opencourse_test
+
+production:
+  <<: *development
+  database: opencourse
+  username: opencourse
+  password: dhf823GQ3423D23
+  host: 192.168.1.107
+  port: 3307
+
+staging:
+  <<: *development
+  database: opencourse
+  username: root
+  password: system
+  port: 3306
