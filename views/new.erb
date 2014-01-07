@@ -1,7 +1,11 @@
+<% if params[:id]%>
+<form action="<%= "/blogs/#{params[:id]}"%>" method="post">
+<% else%>
 <form action="/blogs" method="post">
-  <label>Title:</label><input name="title"/></br>
+<% end %>
+  <label>Title:</label><input name="title" value="<%= @blog.title%>"/></br>
 
-  <label>Content:</label><textarea name="content"></textarea></br>
+  <label>Content:</label><textarea name="content"><%= @blog.content%></textarea></br>
   <input type="submit"/>
 </form>
 <a href="/">返回</a>

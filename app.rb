@@ -25,8 +25,25 @@ get "/" do
   erb :index
 end
 
+get "/api/blogs/index" do
+  @blog = Blog.all
+  json @blog
+end 
+
 get "/blogs/new" do
   @blog=Blog.new
+  erb :new
+end
+
+post "/blogs/:id" do
+  @blog = Blog.find(params[:id])
+  @blog.update_attributes(:title=>params[:title], :content=>params[:content])
+  @blog.save
+  redirect "/"
+end
+
+get "/blogs/:id/edit" do
+  @blog = Blog.find(params[:id])
   erb :new
 end
 
@@ -36,7 +53,7 @@ post "/blogs" do
   redirect '/'
 end
 
-delete "/blogs/:id" do |id|
+delete "/blogs/:id" do
   @blog = Blog.find(params[:id])
   @blog.destroy
   redirect "/"

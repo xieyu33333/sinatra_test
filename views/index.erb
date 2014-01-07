@@ -7,6 +7,7 @@
   	  	<td><a href="<%="/blogs/#{blog.id}"%>"><%= blog.title%></a></td>
   	  	<td><%= blog.content%></td>
         <td><a href="javascript:void(0);" class="blog_delete" id="<%= blog.id%>">删除</a></td>
+        <td><a href="<%= "/blogs/#{blog.id}/edit"%>">编辑</a></yd>
   	  </tr>
   	<% end %>
   </table>
