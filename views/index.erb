@@ -6,10 +6,13 @@
   	  <tr>
   	  	<td><a href="<%="/blogs/#{blog.id}"%>"><%= blog.title%></a></td>
   	  	<td><%= blog.content%></td>
-        <td><a href="javascript:void(0);" class="blog_delete" id="<%= blog.id%>">删除</a></td>
+        <td><!-- <a href="javascript:void(0);" class="blog_delete" id="<%= blog.id%>">删除</a> -->
+          <a href="<%= "/blogs/#{blog.id}?_method=delete"%>" _method="delete">删除</a>
+        </td>
         <td><a href="<%= "/blogs/#{blog.id}/edit"%>">编辑</a></yd>
   	  </tr>
   	<% end %>
   </table>
   <a class="btn btn-primary" href="/blogs/new">新建</a>
+  <a href="javascript:void(0);" class="get_index">get_json</a>
 </div>

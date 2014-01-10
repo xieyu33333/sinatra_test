@@ -14,4 +14,11 @@ $(document).ready(function(){
       }
     })
   })
+
+  $('body').on('click', '.get_index',function(e){
+    e.preventDefault;
+    $.getJSON('/', function(data){
+      $('body').append("<p>"+JSON.stringify(data)+"</p>")
+    })
+  })
 })

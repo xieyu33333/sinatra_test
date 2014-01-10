@@ -5,16 +5,12 @@ require 'sinatra'
 require 'sinatra/contrib/all'
 require 'active_record'
 require 'sinatra/activerecord'
+#require 'rack'
 require_folder("helpers")
 require_folder("model")
 
-ActiveRecord::Base.establish_connection(
-  :adapter  => "mysql2",
-  :host     => "127.0.0.1",
-  :username => "root",
-  :password => "root",
-  :database => "sinatra_test"
-)
+ENV['RACK_ENV'] ||= "development"
+ActiveRecord::Base.establish_connection YAML.load_file("./config/db.yml")[ENV['RACK_ENV'].to_s]
 
 set :method_override, true
 set :logging, true
@@ -22,7 +18,10 @@ use Rack::MethodOverride
 
 get "/" do
   @blog = Blog.all
-  erb :index
+  respond_to do |f|
+    f.html { erb :index }
+    f.json { @blog.to_json }
+  end
 end
 
 get "/api/blogs/index" do

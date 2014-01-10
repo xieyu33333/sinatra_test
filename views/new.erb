@@ -3,7 +3,7 @@
 <% else%>
 <form action="/blogs" method="post">
 <% end %>
-  <label>Title:</label><input name="title" value="<%= @blog.title%>"/></br>
+  <label>Title: </label><input name="title" value="<%= @blog.title%>"/></br>
 
   <label>Content:</label><textarea name="content"><%= @blog.content%></textarea></br>
   <input type="submit"/>
